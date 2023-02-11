@@ -172,6 +172,7 @@ namespace MyRestHR
             this.Firebtn.TabIndex = 19;
             this.Firebtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Firebtn.UseVisualStyleBackColor = false;
+            this.Firebtn.Click += new System.EventHandler(this.Firebtn_Click);
             // 
             // Firelbl
             // 
@@ -227,7 +228,7 @@ namespace MyRestHR
             // fillpay
             // 
             this.fillpay.AutoSize = true;
-            this.fillpay.Location = new System.Drawing.Point(187, 588);
+            this.fillpay.Location = new System.Drawing.Point(181, 588);
             this.fillpay.Name = "fillpay";
             this.fillpay.Size = new System.Drawing.Size(0, 17);
             this.fillpay.TabIndex = 27;
@@ -289,12 +290,12 @@ namespace MyRestHR
         private System.Windows.Forms.Label Paylbl;
         private System.Windows.Forms.Button Firebtn;
         private System.Windows.Forms.Label Firelbl;
-        private System.Windows.Forms.Label fillid;
-        private System.Windows.Forms.Label fillname;
-        private System.Windows.Forms.Label filllast;
-        private System.Windows.Forms.Label fillage;
-        private System.Windows.Forms.Label fillextra;
-        private System.Windows.Forms.Label fillpay;
-        private System.Windows.Forms.Label fillsnr;
+        public System.Windows.Forms.Label fillid;
+        public System.Windows.Forms.Label fillname;
+        public System.Windows.Forms.Label filllast;
+        public System.Windows.Forms.Label fillage;
+        public System.Windows.Forms.Label fillextra;
+        public System.Windows.Forms.Label fillpay;
+        public System.Windows.Forms.Label fillsnr;
     }
 }

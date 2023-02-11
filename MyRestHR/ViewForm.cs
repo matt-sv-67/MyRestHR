@@ -10,135 +10,104 @@ using System.Windows.Forms;
 
 namespace MyRestHR
 {
+    [Serializable]
     public partial class ViewForm : Form
     {
-        AllLists lsts = new AllLists();
+        AllLists _lists;
 
-        private int curIndex;
-        public ViewForm()
+        public ViewForm(AllLists lists)
         {
             InitializeComponent();
-            Headerlbl.Text = "Choose employee to display";
+            Headerlbl.Text = "Choose Employee To Display";
+            _lists = lists;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)          // return button
         {
             this.Close();
+            ((Form1)Form1.ActiveForm).SaveLoadFront();
             ((Form1)Form1.ActiveForm).MovePanel();
             ((Form1)Form1.ActiveForm).view = 0;
-
         }
-        int ClickedOn;
-        public void visual_MouseDown(object sender, MouseEventArgs e)
+
+
+        private void Firebtn_Click(object sender, EventArgs e)             //Remove Employee
         {
-            PictureBox visual = new PictureBox();
-            visual = (PictureBox)sender;
-            curIndex = -1;
-            for (int i = 0; i < lsts.countman; i++)
+            if (_lists.countman != 0 || _lists.countwait != 0 || _lists.countbar != 0)
             {
-                if (lsts._managers[i].isInside(visual.Location.X + e.X, visual.Location.Y + e.Y))
+
+
+                int DeleteID = Convert.ToInt32(fillid.Text);
+
+                Managers ManToRemvore = _lists._managers.Find(r => r.EmployeeID == DeleteID);
+                Waiter WitToRemvore = _lists._waiters.Find(r => r.EmployeeID == DeleteID);
+                Bartender BarToRemvore = _lists._bartenders.Find(r => r.EmployeeID == DeleteID);
+
+                if (ManToRemvore != null)
                 {
-                    ClickedOn = 1;
-                    string s = e.Button.ToString();
-                    if (s == "Left")
-                    {
-                        lsts._managers[i].ViewDisplay( fillname,  filllast,  fillage,  fillsnr,  fillextra,  fillid,  fillpay);
-                        curIndex = i;
-                        lsts._managers[i].setSpeed(0);
-                        break;
-                    }
+                    ManToRemvore.picture.Dispose();
+                    _lists._managers.RemoveAll(r => r.EmployeeID == DeleteID);
+                    _lists.countman--;
                 }
-            }
-            for (int i = 0; i < lsts.countwait; i++)
-            {
-                if (lsts._waiters[i].isInside(visual.Location.X + e.X, visual.Location.Y + e.Y))
+                if (WitToRemvore != null)
                 {
-                    ClickedOn = 2;
-                    string s = e.Button.ToString();
-                    if (s == "Left")
-                    {
-                        lsts._waiters[i].ViewDisplay(fillname, filllast, fillage, fillsnr, fillextra, fillid, fillpay);
-                        curIndex = i;
-                        lsts._waiters[i].setSpeed(0);
-                        break;
-                    }
+                    WitToRemvore.picture.Dispose();
+                    _lists._waiters.RemoveAll(r => r.EmployeeID == DeleteID);
+                    _lists.countwait--;
                 }
-            }
-            for (int i = 0; i < lsts.countbar; i++)
-            {
-                if (lsts._bartenders[i].isInside(visual.Location.X + e.X, visual.Location.Y + e.Y))
+                if (BarToRemvore != null)
                 {
-                    ClickedOn = 3;
-                    string s = e.Button.ToString();
-                    if (s == "Left")
-                    {
-                        lsts._bartenders[i].ViewDisplay(fillname, filllast, fillage, fillsnr, fillextra, fillid, fillpay);
-                        curIndex = i;
-                        lsts._bartenders[i].setSpeed(0);
-                        break;
-                    }
+                    BarToRemvore.picture.Dispose();
+                    _lists._bartenders.RemoveAll(r => r.EmployeeID == DeleteID);
+                    _lists.countbar--;
                 }
+
+            ((Form1)Form1.ActiveForm).prevIndex = -1;
+                ClearEmployeeview();
             }
         }
 
-        public void visual_MouseUp(object sender, MouseEventArgs e)
-        {                     
-            if (curIndex >= 0)
-            {
-                switch (ClickedOn)
-                {
-                    case 1:
-                        lsts._managers[curIndex].setSpeed(3);
-                        break;
-                    case 2:
-                        lsts._waiters[curIndex].setSpeed(3);
-                        break;
-                    case 3:
-                        lsts._bartenders[curIndex].setSpeed(3);
-                        break;
-                    default:
-                        break;
-                }
-            }
-                
-            curIndex = -1;
-        }
 
+
+
+        private void ClearEmployeeview()
+        {
+            fillid.Text = null;
+            fillname.Text = null;
+            filllast.Text = null;
+            fillage.Text = null;
+            fillsnr.Text = null;
+            fillextra.Text = null;
+            fillpay.Text = null;
+        }
         private void ViewForm_Load(object sender, EventArgs e)
         {
 
         }
-
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
-
         private void extralbl_Click(object sender, EventArgs e)
         {
 
         }
-
         private void snrlbl_Click(object sender, EventArgs e)
         {
 
         }
-
         private void agelbl_Click(object sender, EventArgs e)
         {
 
         }
-
         private void lastlbl_Click(object sender, EventArgs e)
         {
 
         }
-
         private void namelbl_Click(object sender, EventArgs e)
         {
 
         }
-
         private void fillname_Click(object sender, EventArgs e)
         {
 

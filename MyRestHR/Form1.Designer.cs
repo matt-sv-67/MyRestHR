@@ -21,7 +21,7 @@ namespace MyRestHR
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+         #region Windows Form Designer generated code
 
         /// <summary>
         /// Required method for Designer support - do not modify
@@ -29,6 +29,7 @@ namespace MyRestHR
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.BackGround = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
@@ -36,9 +37,11 @@ namespace MyRestHR
             this.AddBtn = new System.Windows.Forms.Button();
             this.ViewBtn = new System.Windows.Forms.Button();
             this.LeftPanel = new System.Windows.Forms.Panel();
-            this.BarBoredrs = new System.Windows.Forms.PictureBox();
+            this.loadbtn = new System.Windows.Forms.Button();
+            this.savebtn = new System.Windows.Forms.Button();
+            this.moveEmployee = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BackGround)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BarBoredrs)).BeginInit();
+            this.LeftPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // BackGround
@@ -104,20 +107,45 @@ namespace MyRestHR
             // 
             // LeftPanel
             // 
+            this.LeftPanel.Controls.Add(this.loadbtn);
+            this.LeftPanel.Controls.Add(this.savebtn);
             this.LeftPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.LeftPanel.Location = new System.Drawing.Point(0, 0);
             this.LeftPanel.Name = "LeftPanel";
             this.LeftPanel.Size = new System.Drawing.Size(367, 753);
             this.LeftPanel.TabIndex = 8;
             // 
-            // BarBoredrs
+            // loadbtn
             // 
-            this.BarBoredrs.BackColor = System.Drawing.Color.Transparent;
-            this.BarBoredrs.Location = new System.Drawing.Point(774, 5);
-            this.BarBoredrs.Name = "BarBoredrs";
-            this.BarBoredrs.Size = new System.Drawing.Size(517, 264);
-            this.BarBoredrs.TabIndex = 9;
-            this.BarBoredrs.TabStop = false;
+            this.loadbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(122)))), ((int)(((byte)(121)))));
+            this.loadbtn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.loadbtn.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadbtn.Location = new System.Drawing.Point(215, 675);
+            this.loadbtn.Name = "loadbtn";
+            this.loadbtn.Size = new System.Drawing.Size(70, 70);
+            this.loadbtn.TabIndex = 9;
+            this.loadbtn.Text = "Load";
+            this.loadbtn.UseVisualStyleBackColor = false;
+            this.loadbtn.Click += new System.EventHandler(this.loadbtn_Click_1);
+            // 
+            // savebtn
+            // 
+            this.savebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(122)))), ((int)(((byte)(121)))));
+            this.savebtn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.savebtn.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.savebtn.Location = new System.Drawing.Point(291, 675);
+            this.savebtn.Name = "savebtn";
+            this.savebtn.Size = new System.Drawing.Size(70, 70);
+            this.savebtn.TabIndex = 9;
+            this.savebtn.Text = "Save";
+            this.savebtn.UseVisualStyleBackColor = false;
+            this.savebtn.Click += new System.EventHandler(this.savebtn_Click_1);
+            // 
+            // moveEmployee
+            // 
+            this.moveEmployee.Enabled = true;
+            this.moveEmployee.Interval = 20;
+            this.moveEmployee.Tick += new System.EventHandler(this.moveEmployee_Tick_1);
             // 
             // Form1
             // 
@@ -126,7 +154,6 @@ namespace MyRestHR
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(174)))), ((int)(((byte)(173)))));
             this.ClientSize = new System.Drawing.Size(1402, 753);
             this.ControlBox = false;
-            this.Controls.Add(this.BarBoredrs);
             this.Controls.Add(this.ViewBtn);
             this.Controls.Add(this.AddBtn);
             this.Controls.Add(this.titleLbl);
@@ -139,7 +166,7 @@ namespace MyRestHR
             this.Text = "ManagmentHR";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.BackGround)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BarBoredrs)).EndInit();
+            this.LeftPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,7 +180,9 @@ namespace MyRestHR
         public System.Windows.Forms.Button AddBtn;
         public System.Windows.Forms.Button ViewBtn;
         public System.Windows.Forms.Panel LeftPanel;
-        public System.Windows.Forms.PictureBox BarBoredrs;
+        private System.Windows.Forms.Timer moveEmployee;
+        public System.Windows.Forms.Button loadbtn;
+        public System.Windows.Forms.Button savebtn;
     }
-}
+    }
 

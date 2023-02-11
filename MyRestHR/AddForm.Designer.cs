@@ -256,11 +256,11 @@ namespace MyRestHR
         private System.Windows.Forms.RadioButton managerbtn;
         private System.Windows.Forms.RadioButton barbtn;
         private System.Windows.Forms.RadioButton waiterbtn;
-        private System.Windows.Forms.TextBox nametext;
         private System.Windows.Forms.TextBox lasttext;
         private System.Windows.Forms.TextBox agetext;
         private System.Windows.Forms.TextBox snrtext;
         private System.Windows.Forms.TextBox extratext;
         private System.Windows.Forms.Button addbtn;
+        public System.Windows.Forms.TextBox nametext;
     }
 }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace MyRestHR
 {
-    internal abstract class Juniors : Employee
+    [Serializable]
+    public  abstract class Juniors : Employee
     {
         string Level
         {
